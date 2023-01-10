@@ -1,0 +1,62 @@
+class Task1:
+    def __init__(self,states,inputs,string_in,final_state):
+        self.states=states
+        self.inputs=inputs
+        self.string_in=string_in
+        self.final_state=final_state
+        self.in_=False
+        self.state=0
+        for i in self.string_in:
+            if i in self.inputs:
+                self.in_=True
+            else:
+                self.in_=False
+                print("This letter is invalid for our language-->",i)
+    def starting(self):
+        if self.in_ == True:
+            for i in self.string_in:
+                i=int(i)
+                if self.state == 0:
+                    print(f"---{i}--->q0")
+                    self.state=self.q0(i)
+                elif self.state == 1:
+                    print(f"---{i}--->q1")
+                    self.state=self.q1(i)
+                elif self.state == 2:
+                    print(f"---{i}--->q2")
+                    self.state=self.q2(i)
+                elif self.state == 3:
+                    print(f"---{i}--->q3")
+                    self.state=self.q3(i)
+            if self.state == 0:
+                print("Valid")
+            else :
+                print("Invalid") 
+        else:
+            pass
+    def q0(self,word):
+        if word == 0:
+            return 1
+        if word == 1:
+            return 3
+    def q1(self,word):
+        if word == 0:
+            return 0
+        if word == 1:
+            return 2
+    def q2(self,word):
+        if word == 0:
+            return 3
+        if word == 1:
+            return 1
+    def q3(self,word):
+        if word == 0:
+            return 2
+        if word == 1:
+            return 0
+states=['q0','q1','q2','q3']
+inputs=['0','1']
+string_in=input("Enter Your input String: ")
+final_state='q0'
+obj=Task1(states,inputs,string_in,final_state)
+obj.starting()
